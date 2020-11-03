@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "data:import":"node seeder", 
+    "data:destroy":"node seeder -d" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
