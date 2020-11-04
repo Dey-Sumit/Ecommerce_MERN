@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
+import CartScreen from './screens/cartScreen/CartScreen'
 import HomeScreen from './screens/homeScreen/HomeScreen'
 import ProductScreen from './screens/homeScreen/productScreen/ProductScreen'
 
@@ -18,6 +19,7 @@ const App = () => {
                 <Container>
                     <Route path="/" exact component={HomeScreen} />
                     <Route path="/product/:id" exact component={ProductScreen} />
+                    <Route path="/cart/:id?" exact component={CartScreen} />
                 </Container>
             </main>
             {/* <Footer /> */}

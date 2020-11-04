@@ -9,7 +9,7 @@ import {
 
 
 
-export const listProducts = () => async dispatch => {
+export const getListProducts = () => async dispatch => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
         const { data } = await axios.get('/api/v1/products')
@@ -28,7 +28,7 @@ export const listProducts = () => async dispatch => {
     }
 }
 
-export const getSingleProduct = (id) => async dispatch => {
+export const getProductDetails = (id) => async dispatch => {
     try {
         dispatch({ type: PRODUCT_DETAIL_REQUEST })
         const { data } = await axios.get(`/api/v1/products/${id}`)

@@ -4,16 +4,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../../components/Loader'
 import Message from '../../components/message/Message'
 import Product from '../../components/product/Product'
-import { listProducts } from '../../redux/actions/productAction'
+import { getListProducts } from '../../redux/actions/productAction'
 
 const HomeScreen = () => {
-    const dispatch = useDispatch()
 
-    const productList = useSelector(state => state.products)
+
+    const dispatch = useDispatch()
+    const productList = useSelector(state => state.productList)
     const { loading, products, error } = productList
 
     useEffect(() => {
-        dispatch(listProducts())
+        dispatch(getListProducts())
     }, [dispatch])
 
     return (
@@ -22,9 +23,8 @@ const HomeScreen = () => {
 
             {loading ? <Loader />
                 : error ?
-                    <Message variant="alert">{error}</Message>
+                    <Message variant='danger'>{error}</Message>
                     :
-
                     <Row>
                         {products.map(product =>
                             <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
