@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import products from './data/products.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import colors from 'colors';
 
+import productRoutes from './routes/productRoutes.js'
+
 import dotenv from 'dotenv'
+import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 dotenv.config()
 
 const PORT = process.env.PORT || 4000;
@@ -15,10 +17,13 @@ app.use(cors())
 app.use(bodyParser.json())
 
 
-app.get('/', (req, res) => {
-    res.json(products)
-})
+app.use('/api/v1/products', productRoutes)
 
+// not found route
+app.use(notFound)
+
+// custom handle error 
+app.use(errorHandler)
 
 app.listen(PORT, () => {
     console.log(`server is listing on ${PORT}-----`.yellow.bold)
