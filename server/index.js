@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import colors from 'colors';
 
 import productRoutes from './routes/productRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 import dotenv from 'dotenv'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
@@ -18,6 +19,7 @@ app.use(bodyParser.json())
 
 
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/users', userRoutes)
 
 // not found route
 app.use(notFound)
