@@ -9,11 +9,14 @@ import userRoutes from './routes/userRoutes.js'
 
 import dotenv from 'dotenv'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
+import morgan from 'morgan';
+
 dotenv.config()
 
 const PORT = process.env.PORT || 4000;
 
 const app = express();
+app.use(morgan('common'))
 app.use(cors())
 app.use(bodyParser.json())
 

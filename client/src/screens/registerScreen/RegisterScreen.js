@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap'
 import FormContainer from '../../components/formContainer/FormContainer'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login, register } from '../../redux/actions/userAction'
+import { register } from '../../redux/actions/userAction'
 import Message from '../../components/message/Message'
 import Loader from '../../components/Loader'
 
@@ -12,10 +12,7 @@ const RegisterScreen = ({ location, history }) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [name, setName] = useState('')
-
     const [message, setMessage] = useState('')
-
-
 
     const dispatch = useDispatch()
 
@@ -82,7 +79,8 @@ const RegisterScreen = ({ location, history }) => {
                     <Col>
                         Already have an account?
                         <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-                            {" "} Login Here</Link>
+                            {" "} Login Here
+                        </Link>
                     </Col>
                 </Row>
 

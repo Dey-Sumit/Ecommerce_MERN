@@ -1,7 +1,8 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../types"
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../types"
 
 const initialCart = {
-    cartItems: []
+    cartItems: [],
+    shippingAddress: {}
 }
 
 export const cartReducer = (state = initialCart, action) => {
@@ -31,6 +32,11 @@ export const cartReducer = (state = initialCart, action) => {
             return {
                 ...state,
                 cartItems: state.cartItems.filter(item => item.productId !== payload)
+            }
+        case CART_SAVE_SHIPPING_ADDRESS:
+            return {
+                ...state,
+                shippingAddress: payload
             }
 
         default:
