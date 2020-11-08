@@ -10,9 +10,12 @@ import HomeScreen from './screens/homeScreen/HomeScreen'
 import ProductScreen from './screens/homeScreen/productScreen/ProductScreen'
 import LoginScreen from './screens/loginScreen/LoginScreen'
 import PaymentScreen from './screens/paymentScreen/PaymentScreen'
+import ProductsListScreen from './screens/productsListScreen/ProductsListScreen'
+
 import ProfileScreen from './screens/profileScreen/ProfileScreen'
 import RegisterScreen from './screens/registerScreen/RegisterScreen'
 import ShippingScreen from './screens/shippingScreeen/ShippingScreen'
+import UserEditScreen from './screens/userEditScreen/UserEditScreen'
 import UserListScreen from './screens/userListScreen/UserListScreen'
 
 
@@ -23,6 +26,7 @@ const App = () => {
             <Header />
             <main className="py-3">
                 <Container>
+                    <Route path="/admin/user/:id/edit" exact component={UserEditScreen} />
                     <Route path="/" exact component={HomeScreen} />
                     <Route path="/product/:id" exact component={ProductScreen} />
                     <Route path="/cart/:id?" exact component={CartScreen} />
@@ -32,6 +36,7 @@ const App = () => {
                     <Route path="/shipping" exact component={ShippingScreen} />
                     <Route path="/payment" exact component={PaymentScreen} />
                     <Route path="/admin/userlist" exact component={UserListScreen} />
+                    <Route path="/admin/productlist" exact component={ProductsListScreen} />
                 </Container>
             </main>
             {/* <Footer /> */}

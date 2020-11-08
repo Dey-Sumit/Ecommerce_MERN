@@ -118,6 +118,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 })
 
 
+
 //@desc GET all users
 //@route GET /api/v1/users
 //@access Private/Admin
@@ -130,6 +131,39 @@ export const getAllUsers = asyncHandler(async (req, res) => {
     res.json(users)
 })
 
+//@desc Delete user
+//@route DELETE /api/v1/users/:id
+//@access Private/Admin
+
+export const deleteUser = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.params.id)
+    console.log(user);
+    if (user) {
+        await user.remove()
+        res.json({ message: 'User removed' })
+    }
+    else {
+        res.status(404)
+        throw new Error('User not found')
+    }
+})
+
+//@desc Get user by id
+//@route GET /api/v1/users/:id
+//@access Private/Admin
+
+export const getUser = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.params.id).isSelected('-password')
+    if (user) {
+        res.json(user)
+    }
+    else {
+        res.status(404)
+        throw new Error('User not found')
+    }
+})
 
 
 
