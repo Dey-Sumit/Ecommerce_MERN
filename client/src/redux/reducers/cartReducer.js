@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../types"
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PAYMENT_METHOD, CART_SAVE_SHIPPING_ADDRESS } from "../types"
 
 const initialCart = {
     cartItems: [],
@@ -37,6 +37,11 @@ export const cartReducer = (state = initialCart, action) => {
             return {
                 ...state,
                 shippingAddress: payload
+            }
+        case CART_SAVE_PAYMENT_METHOD:
+            return {
+                ...state,
+                paymentMethod: payload
             }
 
         default:

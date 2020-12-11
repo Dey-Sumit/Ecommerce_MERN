@@ -7,6 +7,8 @@ export const protect = expressAsyncHandler(async (req, res, next) => {
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
+
+            // decode and set the user in request
             token = req.headers.authorization.split(' ')[1]
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
             req.user = await User.findById(decoded.id).select('-password')
@@ -29,7 +31,6 @@ export const protect = expressAsyncHandler(async (req, res, next) => {
 
 export const admin = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
-        console.log(req.user);
         next()
 
     } else {
